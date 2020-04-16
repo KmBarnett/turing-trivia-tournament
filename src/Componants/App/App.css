@@ -1,0 +1,9 @@
+/* #EF3752, #14F1FC, #F9AD03, #4B4D4F, #ffffff */
+.App {
+  background: #ffffff;
+  display: inherit;
+  justify-content: inherit;
+  align-items: inherit;
+  padding: inherit;
+  border-radius: 45px;
+}
