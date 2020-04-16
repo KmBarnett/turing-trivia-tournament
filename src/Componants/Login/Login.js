@@ -73,4 +73,8 @@ class Login extends Component {
   }
 }
 
+const mapDispatchToProps = (dispatch) => ({
+  logIn: (user) => dispatch( logIn(user) ),
+})
+
 export default Login;
