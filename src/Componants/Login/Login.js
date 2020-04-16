@@ -78,3 +78,7 @@ const mapDispatchToProps = (dispatch) => ({
 })
 
 export default Login;
+
+Login.propTypes = {
+  logIn: PropTypes.func.isRequired,
+}
