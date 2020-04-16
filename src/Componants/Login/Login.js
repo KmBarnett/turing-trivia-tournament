@@ -21,6 +21,13 @@ class Login extends Component {
     })
   }
 
+  submitForm = (event) => {
+    const { name, cohort } = this.state
+    event.preventDefault();
+    this.props.logIn({name, cohort })
+    this.setState({play: true})
+  }
+
   render() {
     const { name, cohort } = this.state
     const filledOut = (name && cohort)
