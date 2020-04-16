@@ -11,7 +11,14 @@ class Login extends Component {
     this.state = {
       name: '',
       cohort: '',
+      play: false
     }
+  }
+
+  handleChange = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value
+    })
   }
 
   render() {

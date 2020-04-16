@@ -1,0 +1,66 @@
+/* #EF3752, #14F1FC, #F9AD03, #4B4D4F, #ffffff */
+form {
+  display: inherit;
+  justify-content: space-between;
+  align-items: inherit;
+  flex-direction: column;
+  width: 40%;
+  min-width: 270px;
+  height: 40%;
+  padding: 2%;
+  background-color: #14f1fc;
+  border-radius: inherit;
+}
+
+form * {
+  font-size: 1.7rem;
+}
+
+form label .login-input {
+  margin-left: 1%;
+}
+
+form label input {
+  padding: 1%;
+  border-radius: 5px;
+  width: 75%;
+}
+
+form label input::placeholder {
+  text-align: center;
+}
+
+form label {
+  width: 100%;
+  text-align: center;
+}
+
+form a {
+  width: 175px;
+  height: 40px;
+}
+
+form button {
+  width: 175px;
+  height: 40px;
+  border-radius: 5px;
+  background: #ef3752;
+  color: #ffffff;
+}
+
+form button:hover {
+  transform: scale(1.45);
+  color: #ef3752;
+  background: #ffffff;
+}
+
+form button:not(:disabled):hover::after {
+  content: "!!!";
+}
+
+form button:disabled {
+  color: #4b4d4f;
+  opacity: 0.7;
+  background: #ffffff;
+  transform: scale(0.85);
+}
