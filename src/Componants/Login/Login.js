@@ -22,7 +22,7 @@ class Login extends Component {
   }
 
   submitForm = (e) => {
-    const {name, cohort, play} = this.state
+    const { name, cohort } = this.state
     e.preventDefault();
     this.props.logIn({name, cohort})
     this.setState({play: true})
@@ -32,7 +32,7 @@ class Login extends Component {
     const {name, cohort, play} = this.state
     const filledOut = (name && cohort)
     const redirectPath = play ? '/game' : '/';
-    
+
     return (<form onSubmit={this.submitForm} className='log-in-form'>
       <Redirect to={redirectPath}/>
       <label htmlFor='name-input'>Name:
@@ -57,7 +57,6 @@ class Login extends Component {
 const mapDispatchToProps = (dispatch) => ({
   logIn: (user) => {
     dispatch(logIn(user))
-    console.log('done')
   }
 })
 
