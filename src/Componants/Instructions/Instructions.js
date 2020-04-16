@@ -25,3 +25,10 @@ const mapStateToProps = state => ({
 })
 
 export default connect(mapStateToProps, null)(Instructions);
+
+Instructions.propTypes = {
+  user: PropTypes.shape({
+    cohort: PropTypes.string,
+    name: PropTypes.string,
+  })
+}
