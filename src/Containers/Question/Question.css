@@ -1,0 +1,44 @@
+.Question {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0 2%;
+}
+
+.Question header {
+  width: 100%;
+  height: 20%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.Question header h1 {
+  text-transform: capitalize;
+  font-size: 3rem;
+}
+
+.Question button {
+  font-size: 2rem;
+  width: fit-content;
+}
+
+.Question .question-category {
+  font-size: 1.5rem;
+}
+
+.Question .question-text {
+  font-size: 2rem;
+}
+
+.Question .answers {
+  width: 100%;
+  height: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-self: flex-start;
+}
