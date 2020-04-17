@@ -1,7 +1,7 @@
 /* #EF3752, #14F1FC, #F9AD03, #4B4D4F, #ffffff */
 .Instructions {
-  width: 60%;
-  height: 60%;
+  width: 70%;
+  height: 70%;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -16,8 +16,20 @@
   font-size: 1.5rem;
 }
 
+.Instructions li {
+  font-size: 1.25rem;
+}
+
 .Instructions span {
   text-transform: capitalize;
+}
+
+.Instructions .welcome {
+  width: 100%;
+}
+
+.Instructions .message {
+  text-indent: 4rem;
 }
 
 .Instructions button {

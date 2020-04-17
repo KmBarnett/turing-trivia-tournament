@@ -12,7 +12,13 @@ function Instructions(props) {
     return (
       <article className='Instructions'>
         <Redirect to={redirectPath}/>
-        <p> Welcome <span>{user.name}</span>, Its Time to particpate in the TURING TRIVA TOURNAMENT!!! Prepare to battle it out, prove your worth, and bring glory to the {user.cohort} cohort.</p>
+        <p className='welcome'> Welcome,</p>
+        <p className='message'><span>{user.name}</span>, Its Time to participate in the TURING TRIVA TOURNAMENT!!! Prepare to battle it out, prove your worth, to bring glory to the {user.cohort} cohort.</p>
+        <ul>
+          <li>You will have 60 seconds to answer 10 questions</li>
+          <li>Each question is worth 100pts</li>
+          <li>A multiplier will be applied for speed</li>
+        </ul>
         <Link to='/game/start'>
           <button>Start</button>
         </Link>
