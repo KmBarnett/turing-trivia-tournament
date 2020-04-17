@@ -9,8 +9,9 @@ class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: '',
-      cohort: '',
+      name: undefined,
+      cohort: undefined,
+      program: undefined,
       play: false
     }
   }
@@ -22,15 +23,15 @@ class Login extends Component {
   }
 
   submitForm = (e) => {
-    const { name, cohort } = this.state
+    const { name, cohort, program } = this.state
     e.preventDefault();
-    this.props.logIn({name, cohort})
+    this.props.logIn({name, cohort, program})
     this.setState({play: true})
   }
 
   render() {
-    const {name, cohort, play} = this.state
-    const filledOut = (name && cohort)
+    const {name, cohort, program, play} = this.state
+    const filledOut = (name && cohort && program)
     const redirectPath = play ? '/game' : '/';
 
     return (<form onSubmit={this.submitForm} className='log-in-form'>
@@ -38,8 +39,15 @@ class Login extends Component {
       <label htmlFor='name-input'>Name:
         <input id='name-input' type='text' name='name' className='login-input' value={this.state.name} placeholder='Your Name' onChange={this.handleChange} required="required"/>
       </label>
+      <label htmlFor='program'>Program:
+        <select id="program-input" name='program' className='login-input' value={this.state.program} placeholder='Your Cohort' onChange={this.handleChange} required="required" defaultValue='pick program'>
+          <option disabled="disabled" hidden="hidden" value="pick program">Pick Program</option>
+          <option value="BE">BE</option>
+          <option value="FE">FE</option>
+        </select>
+      </label>
       <label htmlFor='cohort-input'>Cohort:
-        <select id="cohort-input" name='cohort' className='login-input' value={this.state.password} placeholder='Your password' onChange={this.handleChange} required="required" defaultValue='pick cohort'>
+        <select id="cohort-input" name='cohort' className='login-input' value={this.state.cohort} placeholder='Your Cohort' onChange={this.handleChange} required="required" defaultValue='pick cohort'>
           <option disabled="disabled" hidden="hidden" value="pick cohort">Pick Cohort</option>
           <option value="1909">1909</option>
           <option value="1911">1911</option>
