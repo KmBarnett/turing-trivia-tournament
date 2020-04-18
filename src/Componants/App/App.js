@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import Login from './../Login/Login.js'
 import Instructions from './../Instructions/Instructions.js'
 import Question from './../../Containers/Question/Question.js'
+import End from './../End/End.js'
 import { getQuestions } from '../../actions';
 
 
@@ -32,6 +33,9 @@ class App extends Component {
         </Route>
         <Route exact path='/game/start' >
           <Question />
+        </Route>
+        <Route path='/game/end' >
+          <End />
         </Route>
       </main>
     );
