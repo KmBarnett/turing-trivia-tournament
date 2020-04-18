@@ -3,12 +3,12 @@ import './Question.css';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import GameTimer from './../../Componants/Timer/Timer.js'
-import { answerQuestion } from '../../actions';
+import { answerQuestion, logScore } from '../../actions';
 import { Redirect } from 'react-router-dom';
 
 
 function Question(props) {
-  const { currentQuestion, user, questionsLeft } = props
+  const { currentQuestion, user, questionsLeft, score, time } = props
   const answersI = Math.floor(Math.random() * 4)
   let redirectPath = '/game/start';
   let answers = [];
@@ -17,6 +17,8 @@ function Question(props) {
   let correctAnswer
 
   if (questionsLeft === 0) {
+    const multipliedScore = score * (1 + time/25)
+    props.logScore({score: multipliedScore, name:user.name, cohort: user.cohort, time: time})
     redirectPath ='/game/end'
   } else if (currentQuestion) {
     const { incorrect_answers, correct_answer, category, question, type} = currentQuestion;
@@ -26,9 +28,11 @@ function Question(props) {
     answers = type !== 'boolean' ? [...incorrect_answers] : ['True', 'False']
     type !== 'boolean' && answers.splice(answersI, 0, correct_answer)
   }
-  function pickAwnser(e) {  
-    const correct = decodeURIComponent(correctAnswer) === e.target.value;
-    props.answerQuestion(correct)
+  function pickAwnser(e) {
+    const answer = decodeURIComponent(correctAnswer)
+    const catagory = decodeURIComponent
+    const correct = answer === e.target.value;
+    props.answerQuestion({correct, catagory:questionCategory})
   }
 
   function mapAnswers() {
@@ -65,11 +69,14 @@ function Question(props) {
 const mapStateToProps = state => ({
   user: state.user,
   currentQuestion: state.questions[state.answers.length],
-  questionsLeft: state.questions.length - state.answers.length
+  questionsLeft: state.questions.length - state.answers.length,
+  score: state.answers.filter(answer => answer.correct).length * 100,
+  time: !(state.questions.length - state.answers.length) && state.time
 })
 
 const mapDispatchToProps = dispatch => ({
-  answerQuestion: answer => dispatch( answerQuestion(answer) )
+  answerQuestion: answer => dispatch( answerQuestion(answer) ),
+  logScore: scoreData => dispatch( logScore(scoreData) )
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Question);
