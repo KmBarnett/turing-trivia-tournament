@@ -9,23 +9,23 @@ class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: undefined,
+      name: '',
       cohort: undefined,
       program: undefined,
       play: false
     }
   }
 
-  handleChange = (event) => {
+  handleChange = (e) => {
     this.setState({
-      [event.target.name]: event.target.value
+      [e.target.name]: e.target.value
     })
   }
 
   submitForm = (e) => {
     const { name, cohort, program } = this.state
     e.preventDefault();
-    this.props.logIn({name, cohort, program})
+    this.props.logIn({name, cohort: cohort + program})
     this.setState({play: true})
   }
 
@@ -37,7 +37,7 @@ class Login extends Component {
     return (<form onSubmit={this.submitForm} className='log-in-form'>
       <Redirect to={redirectPath}/>
       <label htmlFor='name-input'>Name:
-        <input id='name-input' type='text' name='name' className='login-input' value={this.state.name} placeholder='Your Name' onChange={this.handleChange} required="required"/>
+        <input id='name-input' type='text' name='name' className='login-input' value={this.state.name} placeholder='Your Name' onChange={(e) => this.handleChange(e)} required="required"/>
       </label>
       <label htmlFor='program'>Program:
         <select id="program-input" name='program' className='login-input' value={this.state.program} placeholder='Your Cohort' onChange={this.handleChange} required="required" defaultValue='pick program'>
