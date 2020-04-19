@@ -1,0 +1,27 @@
+.Winner {
+  width: 90%;
+  height: 80%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.svg-wrapper * {
+  overflow: visible;
+  fill: inherit;
+  height: 122%;
+}
+
+.svg-wrapper {
+  overflow: hidden;
+  width: 100%;
+  height: 110%;
+}
+
+.Winner .svg-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
