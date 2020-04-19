@@ -4,11 +4,13 @@ import { logIn } from '../../actions';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
+import uniqid from 'uniqid';
 
 class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      id: uniqid(),
       name: '',
       cohort: undefined,
       program: undefined,
@@ -23,9 +25,9 @@ class Login extends Component {
   }
 
   submitForm = (e) => {
-    const { name, cohort, program } = this.state
+    const { name, cohort, program, id } = this.state
     e.preventDefault();
-    this.props.logIn({name, cohort: cohort + program})
+    this.props.logIn({ id, name, cohort: cohort + program })
     this.setState({play: true})
   }
 
