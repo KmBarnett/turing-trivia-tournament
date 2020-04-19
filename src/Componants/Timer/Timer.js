@@ -34,7 +34,7 @@ class GameTimer extends Component {
 
   render() {
     const startTime = 60000;
-    const { active, redirectPath } = this.state
+    const { redirectPath } = this.state
     return (
       <div className='Timer'>
         <div className='animated-timer timer-started'></div>
