@@ -19,12 +19,11 @@ function Leaderboard({ data, display }) {
     leadScafold.fill({...anon}, 0, 10)
     const sortedData = [...data, ...leadScafold].sort((a,b) => b.score - a.score)
     entries = sortedData.slice(0, 10).map((entry, index) => {
-      return createSpot({... entry, index})})
+      return createSpot({...entry, index})})
   } else {
-    console.log(data);
     const sortedData = [...data].sort((a,b) => b.score - a.score)
     entries = sortedData.slice(0, 10).map((entry, index) => {
-      return createSpot({... entry, index})})
+      return createSpot({...entry, index})})
   }
 
 

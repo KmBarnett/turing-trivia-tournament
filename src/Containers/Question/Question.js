@@ -18,7 +18,8 @@ function Question(props) {
 
   if (questionsLeft === 0) {
     const multipliedScore = score * (1 + time/25)
-    props.logScore({score: multipliedScore, name:user.name, cohort: user.cohort, time: time})
+    const timeTaken = 60 - time
+    props.logScore({score: multipliedScore, name:user.name, cohort: user.cohort, time: timeTaken})
     redirectPath ='/game/end'
   } else if (currentQuestion) {
     const { incorrect_answers, correct_answer, category, question, type} = currentQuestion;
@@ -30,9 +31,9 @@ function Question(props) {
   }
   function pickAwnser(e) {
     const answer = decodeURIComponent(correctAnswer)
-    const catagory = decodeURIComponent
+    const category = decodeURIComponent(questionCategory)
     const correct = answer === e.target.value;
-    props.answerQuestion({correct, catagory:questionCategory})
+    props.answerQuestion({correct, category})
   }
 
   function mapAnswers() {
