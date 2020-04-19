@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './End.css';
 import { Route, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -17,10 +17,11 @@ function End(props) {
         const cohortsScors = scores.reduce((cohorts, score) => {
           cohorts[score.cohort] = cohorts[score.cohort] || {}
           cohorts[score.cohort].score = cohorts[score.cohort].score || 0
+          cohorts[score.cohort].time = cohorts[score.cohort].time || 0
           cohorts[score.cohort].name = score.cohort
           cohorts[score.cohort].cohort = score.cohort
           cohorts[score.cohort].score += score.score
-          console.log(cohorts[score.cohort].score);
+          cohorts[score.cohort].time += score.time
           return cohorts
         },{})
         return Object.keys(cohortsScors).map(cohort => cohortsScors[cohort])
@@ -67,6 +68,7 @@ function End(props) {
         }}
       />
       <Route
+        exact
         path="/game/end/"
         render={() => {
           return <Winner
