@@ -39,19 +39,26 @@ describe('Header', () => {
     expect(categorySelect).toBeInTheDocument()
   });
 
-  it('should render the default content', () => {
+  it('should send user Choices the to store', () => {
     const { getByPlaceholderText, getByTestId, debug } = renderLogin()
 
     const nameInput = getByPlaceholderText('Your Name')
     const cohortSelect = getByTestId('select-cohort')
     const programSelect = getByTestId('select-program')
     const categorySelect = getByTestId('select-category')
+    const submitButton = getByTestId('submit')
 
     fireEvent.change(nameInput, {target: {value: 'Alan Turing'}});
-    selectEvent.select(cohortSelect, {target: {value: '1911'}});
-    selectEvent.select(programSelect, {target: {value: 'FE'}});
-    selectEvent.select(categorySelect, {target: {value: '1'}});
-    debug()
+    fireEvent.change(cohortSelect, {target: {value: '1911'}});
+    fireEvent.change(programSelect, {target: {value: 'FE'}});
+    fireEvent.change(categorySelect, {target: {value: '2'}});
+    fireEvent.click(submitButton)
+
+    const currentState = testStore.getState()
+
+    expect(currentState.user.name).toBe('Alan Turing')
+    expect(currentState.user.cohort).toBe('1911FE')
+    expect(currentState.category).toBe('2')
   });
 
 })

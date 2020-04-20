@@ -53,7 +53,6 @@ class Login extends Component {
         <input id='name-input' type='text' name='name' className='login-input' value={this.state.name} placeholder='Your Name' onChange={(e) => this.handleChange(e)} required="required"/>
       </label>
       <label htmlFor='program'>Program:
-        <input list="browsers">
         <select data-testid="select-program" id="program-input" name='program' className='login-input' value={this.state.program} onChange={this.handleChange} required="required" defaultValue='pick program'>
           <option disabled="disabled" hidden="hidden" value="pick program">Pick Program</option>
           <option value="BE">BE</option>
@@ -75,7 +74,7 @@ class Login extends Component {
             <option key={cata.id} value={cata.id}>{cata.name}</option>)}
         </select>
       </label>
-      <button disabled={!filledOut} type="submit">
+      <button data-testid='submit' disabled={!filledOut} type="submit">
         Let's Play
       </button>
     </form>)
