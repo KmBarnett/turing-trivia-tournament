@@ -2,11 +2,11 @@
 form {
   display: inherit;
   justify-content: space-between;
-  align-items: inherit;
+  align-items: center;
   flex-direction: column;
-  width: 40%;
+  width: 45%;
   min-width: 270px;
-  height: 40%;
+  height: 60%;
   padding: 2%;
   background-color: #14f1fc;
   border-radius: inherit;
@@ -23,16 +23,20 @@ form label .login-input {
 form label input {
   padding: 1%;
   border-radius: 5px;
-  width: 75%;
 }
 
 form label input::placeholder {
   text-align: center;
 }
 
+form select {
+  width: 50%;
+}
+
 form label {
-  width: 100%;
+  width: 90%;
   text-align: center;
+  white-space: nowrap;
 }
 
 form a {
@@ -46,6 +50,7 @@ form button {
   border-radius: 5px;
   background: #ef3752;
   color: #ffffff;
+  align-self: center;
 }
 
 form button:hover {
