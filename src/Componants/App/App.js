@@ -4,7 +4,8 @@ import { Route } from 'react-router-dom';
 import Login from './../Login/Login.js'
 import Instructions from './../Instructions/Instructions.js'
 import Question from './../../Containers/Question/Question.js'
-import End from './../End/End.js'
+import Leaderboard from '../../Containers/Leaderboard/Leaderboard.js'
+import Winner from '../../Containers/Winner/Winner.js'
 
 
 
@@ -20,8 +21,11 @@ function App() {
       <Route exact path='/game/start' >
         <Question />
       </Route>
-      <Route path='/game/end' >
-        <End />
+      <Route exact path="/game/end/">
+        <Winner />
+      </Route>
+      <Route exact path="/game/end/all">
+        <Leaderboard />
       </Route>
     </main>
   );
