@@ -29,3 +29,7 @@ button {
 button:disabled {
   cursor: not-allowed;
 }
+
+ol {
+  list-style: none;
+}
