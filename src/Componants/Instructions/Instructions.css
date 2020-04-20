@@ -16,6 +16,11 @@
   font-size: 1.5rem;
 }
 
+.Instructions ul {
+  list-style: url("assets/bullet.svg");
+  font-size: 1.25rem;
+}
+
 .Instructions li {
   font-size: 1.25rem;
 }
@@ -33,10 +38,26 @@
 }
 
 .Instructions button {
-  background-color: #ef3752;
+  background: none;
   width: 150px;
   height: 150px;
+  color: #14f1fc;
   font-size: 2rem;
+  background-image: url("assets/bullet.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.loading {
+  transform: scale(0.9);
+}
+
+.button-container {
+  background-color: #ef3752;
   border-radius: 180px;
-  border: #4b4d4f solid;
+  display: flex;
+}
+
+.Instructions .button-container:hover {
+  background-color: #00d923;
 }
