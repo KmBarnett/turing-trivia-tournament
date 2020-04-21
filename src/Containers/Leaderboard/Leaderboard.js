@@ -9,8 +9,7 @@ import PropTypes from 'prop-types';
 
 function Leaderboard(props) {
   let entries;
-
-  function createSpot({name, score, cohort, time, index, category}) {
+  function createSpot({name, score, cohort, time, index}) {
     let program;
     if (cohort) {
       program = cohort.includes('BE') ? 'BE' : 'FE';
@@ -19,6 +18,7 @@ function Leaderboard(props) {
     return  <li key={index}> {converter.toOrdinal(index + 1)}: </li>
     }
     return <li
+      data-testid={`place${index}`}
       key={index}
       className={`${program} placed`}>
         {converter.toOrdinal(index + 1)}:
@@ -31,7 +31,7 @@ function Leaderboard(props) {
         </p>
         {time}Sec
         <p>
-          {category}
+          {props.category.name}
         </p>
         <p>
           {cohort}
@@ -66,7 +66,7 @@ function Leaderboard(props) {
           {entries}
         </ol>
         <Link to='/'>
-          <button onClick={runDispatch} type='button'>New Game</button>
+          <button data-testid='new-game' onClick={runDispatch} type='button'>New Game</button>
         </Link>
       </section>
     );
@@ -75,6 +75,7 @@ function Leaderboard(props) {
 
 const mapStateToProps = state => ({
   scores: state.scores,
+  category: state.categories.find(cata => cata.id === parseInt(state.category))
 })
 
 const mapDispatchToProps = dispatch => ({

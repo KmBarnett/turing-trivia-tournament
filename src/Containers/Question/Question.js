@@ -8,7 +8,7 @@ import { Redirect } from 'react-router-dom';
 
 
 function Question(props) {
-  const { currentQuestion, user, questionsLeft, score, time, questionsLoaded , category } = props
+  const { currentQuestion, user, questionsLeft, score, time, questionsLoaded } = props
   const answersI = Math.floor(Math.random() * 4)
   let redirectPath = questionsLoaded ? '/game/start' : '/';
   let answers = [];
@@ -19,7 +19,7 @@ function Question(props) {
   if (questionsLoaded && questionsLeft === 0) {
     const multipliedScore = Math.trunc((score * 100) * (1 + time/25))
     const timeTaken = 60 - time
-    props.logScore({score: multipliedScore, name:user.name, cohort: user.cohort, time: timeTaken, correctAnswers:`${score}/10` , category})
+    props.logScore({score: multipliedScore, name:user.name, cohort: user.cohort, time: timeTaken, correctAnswers:`${score}/10`})
     redirectPath ='/game/end'
   } else if (currentQuestion) {
     const { incorrect_answers, correct_answer, category, question, type} = currentQuestion;
@@ -40,6 +40,7 @@ function Question(props) {
     return answers.map((answer, index) =>{
       const place = String.fromCharCode(65 + index)
       return (<button
+        data-testid={`answer${index}`}
         key ={index}
         type='button'
         onClick ={(e) => pickAwnser(e)}
@@ -73,7 +74,6 @@ const mapStateToProps = state => ({
   score: state.answers.filter(answer => answer.correct).length,
   time: !(state.questions.length - state.answers.length) && state.time,
   questionsLoaded: state.questions.length > 0,
-  category: state.categories.find(cate => parseInt(cate.id) === parseInt(state.category)).name
 })
 
 const mapDispatchToProps = dispatch => ({

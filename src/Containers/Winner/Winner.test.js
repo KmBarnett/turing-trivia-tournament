@@ -13,7 +13,7 @@ jest.mock('../../apiCalls');
 
 const testStore = createStore(rootReducer);
 
-function renderLogin() {
+function renderWinner() {
   return render(<Provider store={testStore}>
     <BrowserRouter>
       <Winner />
@@ -23,7 +23,7 @@ function renderLogin() {
 
 describe('Winner', () => {
   it('should render the default content', async () => {
-    const { getByTestId } = renderLogin()
+    const { getByTestId } = renderWinner()
     const place = getByTestId('place')
     const stats = getByTestId('stats')
     const continueBtn = getByTestId('continue')
@@ -35,7 +35,7 @@ describe('Winner', () => {
   });
 
   it('should navigate', () => {
-    const { getByTestId } = renderLogin()
+    const { getByTestId } = renderWinner()
 
     const continueBtn = getByTestId('continue')
 
