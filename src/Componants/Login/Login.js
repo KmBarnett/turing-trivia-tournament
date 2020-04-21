@@ -98,5 +98,8 @@ const mapStateToProps = state => ({categories: state.categories})
 export default connect(mapStateToProps, mapDispatchToProps)(Login);
 
 Login.propTypes = {
-  logIn: PropTypes.func.isRequired
+  logIn: PropTypes.func.isRequired,
+  getCategories: PropTypes.func.isRequired,
+  setCategory: PropTypes.func.isRequired,
+  categories: PropTypes.array.isRequired,
 }

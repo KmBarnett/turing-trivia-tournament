@@ -82,3 +82,12 @@ const mapDispatchToProps = dispatch => ({
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Question);
+
+Question.propTypes = {
+  currentQuestion: PropTypes.object,
+  questionsLeft:PropTypes.number,
+  score:PropTypes.number,
+  questionsLoaded:PropTypes.bool,
+  answerQuestion:PropTypes.func.isRequired,
+  logScore:PropTypes.func.isRequired
+}

@@ -55,5 +55,8 @@ Instructions.propTypes = {
   user: PropTypes.shape({
     cohort: PropTypes.string,
     name: PropTypes.string,
-  })
+  }),
+  questionsLoaded:PropTypes.bool,
+  category:PropTypes.string,
+  getQuestions:PropTypes.func.isRequired,
 }

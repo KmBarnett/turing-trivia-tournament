@@ -4,6 +4,7 @@ import './Timer.css';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { logTime } from '../../actions';
+import PropTypes from 'prop-types';
 
 
 class GameTimer extends Component {
@@ -70,3 +71,7 @@ const mapDispatchToProps = dispatch => ({
 })
 
 export default connect(null, mapDispatchToProps)(GameTimer);
+
+GameTimer.propTypes = {
+  logTime:PropTypes.func.isRequired
+}

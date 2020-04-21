@@ -64,14 +64,14 @@
 .Leaderboard .table-heads,
 .Leaderboard .table-rows {
   display: inline-grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(5, auto);
   grid-gap: 10px;
   text-align: center;
 }
 
 .Leaderboard .table-heads {
   font-size: 2rem;
-  width: 93%;
+  width: 89%;
   grid-gap: 0px;
 }
 
