@@ -53,14 +53,14 @@ class Login extends Component {
         <input id='name-input' type='text' name='name' className='login-input' value={this.state.name} placeholder='Your Name' onChange={(e) => this.handleChange(e)} required="required"/>
       </label>
       <label htmlFor='program'>Program:
-        <select id="program-input" name='program' className='login-input' value={this.state.program} placeholder='Your Cohort' onChange={this.handleChange} required="required" defaultValue='pick program'>
+        <select data-testid="select-program" id="program-input" name='program' className='login-input' value={this.state.program} onChange={this.handleChange} required="required" defaultValue='pick program'>
           <option disabled="disabled" hidden="hidden" value="pick program">Pick Program</option>
           <option value="BE">BE</option>
           <option value="FE">FE</option>
         </select>
       </label>
       <label htmlFor='cohort-input'>Cohort:
-        <select id="cohort-input" name='cohort' className='login-input' value={this.state.cohort} onChange={this.handleChange} required="required" defaultValue='pick cohort'>
+        <select data-testid="select-cohort" id="cohort-input" name='cohort' className='login-input' value={this.state.cohort} onChange={this.handleChange} required="required" defaultValue='pick cohort'>
           <option disabled="disabled" hidden="hidden" value="pick cohort">Pick Cohort</option>
           <option value="1909">1909</option>
           <option value="1911">1911</option>
@@ -69,12 +69,12 @@ class Login extends Component {
         </select>
       </label>
       <label htmlFor='category-input'>Category:
-        <select id="category-input" name='category' className='login-input' onChange={(e) => this.props.setCategory(e.target.value)} defaultValue={2116}>
+        <select data-testid="select-category" id="category-input" name='category' className='login-input' onChange={(e) => this.props.setCategory(e.target.value)} defaultValue={2116}>
           {this.props.categories.map(cata =>
             <option key={cata.id} value={cata.id}>{cata.name}</option>)}
         </select>
       </label>
-      <button disabled={!filledOut} type="submit">
+      <button data-testid='submit' disabled={!filledOut} type="submit">
         Let's Play
       </button>
     </form>)

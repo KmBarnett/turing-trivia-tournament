@@ -36,7 +36,7 @@ class GameTimer extends Component {
     const startTime = 60000;
     const { redirectPath } = this.state
     return (
-      <div className='Timer'>
+      <div data-testid="timer"  className='Timer'>
         <div className='animated-timer timer-started'></div>
         <Redirect to={redirectPath}/>
         <div className='timer-display'>
