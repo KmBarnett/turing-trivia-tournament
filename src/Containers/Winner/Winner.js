@@ -1,27 +1,16 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './Winner.css';
 import { connect } from 'react-redux';
 import { ReactComponent as Badge } from './assets/icon.svg'
 import converter from 'number-to-words';
-import { Redirect, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Confetti from 'react-confetti'
+import PropTypes from 'prop-types';
 
 
-class Winner extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      redirectPath: '/game/end'
-    }
-  }
-
-  componentDidMount() {
-    // setTimeout(() => {this.setState({redirectPath: '/game/end/all'})}, 10000)
-  }
-
-  render() {
-    const { game, place } = this.props
-    const { redirectPath } = this.state
+function Winner(props) {
+  
+    const { game, place } = props
     const { cohort, name, score, time, correctAnswers } = game;
     const podium = [1,2,3]
 
@@ -31,24 +20,22 @@ class Winner extends Component {
     }
     return (
       <section className='Winner'>
-        <Redirect to={redirectPath}/>
           {podium.includes(place) && <Confetti />}
         <svg className='svg-wrapper' style={{fill: `${program}`}}>
           <Badge />
         </svg>
-        <h3>{converter.toOrdinal(place)}</h3>
-        <ul>
+        <h3 data-testid='place'>{converter.toOrdinal(place)}</h3>
+        <ul data-testid='stats'>
           <li> Name: {name}</li>
           <li> Score: {score}</li>
           <li> Time: {time}</li>
           <li> Grade: {correctAnswers}</li>
         </ul>
-        <Link to='/game/end/all'>
-          <button>Continue</button>
+        <Link to='/game/end/leaderboard'>
+          <button data-testid='continue'>Continue</button>
         </Link>
       </section>
     );
-  }
 }
 
 const showPlace = (scores, myScore) => {
@@ -65,3 +52,8 @@ const mapStateToProps = state => ({
 
 
 export default connect(mapStateToProps, null)(Winner);
+
+Winner.propTypes = {
+  game: PropTypes.object,
+  place: PropTypes.number
+}

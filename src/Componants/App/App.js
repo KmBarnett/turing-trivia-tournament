@@ -24,7 +24,7 @@ function App() {
       <Route exact path="/game/end/">
         <Winner />
       </Route>
-      <Route exact path="/game/end/all">
+      <Route exact path="/game/end/leaderboard">
         <Leaderboard />
       </Route>
     </main>

@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { logOut, clearAnswers } from '../../actions';
 import converter from 'number-to-words';
+import PropTypes from 'prop-types';
 
 
 function Leaderboard(props) {
@@ -83,3 +84,9 @@ const mapDispatchToProps = dispatch => ({
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(Leaderboard);
+
+Leaderboard.propTypes = {
+  scores: PropTypes.array,
+  clearAnswers: PropTypes.func.isRequired,
+  logOut: PropTypes.func.isRequired,
+}
