@@ -1,7 +1,7 @@
 import { time } from './time';
 
 
-describe('timeout Reducer', () => {
+describe('time Reducer', () => {
   it('should return the initial state', () => {
     const expectedResult = 0;
     const result = time(undefined, {})

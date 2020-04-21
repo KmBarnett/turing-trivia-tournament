@@ -2,7 +2,7 @@ import { scores } from './scores';
 import { dataStore } from '../testingData.js'
 
 
-describe('scoresout Reducer', () => {
+describe('scores Reducer', () => {
   it('should return the initial state', () => {
     const expectedResult = [];
     const result = scores(undefined, {})
