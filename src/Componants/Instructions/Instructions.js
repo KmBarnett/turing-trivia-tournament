@@ -13,9 +13,9 @@ class Instructions extends Component {
     const { category } = this.props
     const base = 'https://opentdb.com/api.php?amount=10&encode=url3986'
     const url = category !== 2116 ? `${base}&category=${category}`: base
-     this.props.getQuestions(await fetchQuestions(url))
+    this.props.getQuestions(await fetchQuestions(url))
 
-   }
+  }
 
   render() {
     const { user, questionsLoaded } = this.props
@@ -25,14 +25,14 @@ class Instructions extends Component {
         <article className='Instructions'>
           <Redirect to={redirectPath}/>
           <p className='welcome'> Welcome,</p>
-          <p className='message'><span>{user.name}!!!</span>, Welcome, to the VAULT!! TURING TRIVA Starts now,(actually when you hit start) prove your worth, Claim your spot in history!!</p>
-          <ul>
+          <p  data-testid="message"  className='message'><span>{user.name}!!!</span>, Welcome, to the VAULT!! TURING TRIVA Starts now,(actually when you hit start) prove your worth, Claim your spot in history!!</p>
+          <ul data-testid="instructions">
             <li>You will have 60 seconds to answer 10 questions</li>
             <li>Each question is worth 100pts</li>
             <li>A multiplier (Time Remaining/25) will be applied for speed</li>
           </ul>
           <Link className='button-container' to='/game/start'>
-            <button className={loading} disabled={!questionsLoaded}>Start</button>
+            <button data-testid="start-btn" className={loading} disabled={!questionsLoaded}>Start</button>
           </Link>
         </article>
       );

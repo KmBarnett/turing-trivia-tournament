@@ -9,7 +9,7 @@ import rootReducer from '../../reducers';
 
 const testStore = createStore(rootReducer);
 
-describe('Header', () => {
+describe('Timer', () => {
   it('should render', () => {
     const { getByText, getByTestId } = render(
       <Provider store={testStore}>

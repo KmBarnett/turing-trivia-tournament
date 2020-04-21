@@ -23,7 +23,7 @@ function renderLogin() {
   )
 }
 
-describe('Header', () => {
+describe('Login', () => {
   fetchCategories.mockResolvedValue([{id:1, name:'All'}, {id:2, name:'test'}])
   it('should render the default content', () => {
     const { getByPlaceholderText, getByTestId } = renderLogin()
